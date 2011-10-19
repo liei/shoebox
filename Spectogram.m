@@ -1,35 +1,37 @@
 (* ::Package:: *)
 
 (* Returns the spectrogram of the file found at path *)
-spectrogram[path] := Module[{sampleRate, data}, 
+spectrogram[path] = Module[{sampleRate, data}, 
 
 (*Import the data, grab the sampling rate*)
-sampleRate = Import[path, "SampleRate"];
-data = Flatten@Import[path,"Data"];
+sampleRate = Import["/home/liei/git/shoebox/trainfiles/go/go_0.wav", "SampleRate"];
+data = Flatten@Import["/home/liei/git/shoebox/trainfiles/go/go_0.wav","Data"];
 
 (*Divide soundfile into slices. Perform fourier transform on the slices,
 and make a spectrogram*)
 
 (*Number of data points in each slice. A resolution of 100 slices per second.*)
-sliceSize = sampleRate / 100;
+sliceSize = 80;
+overlap = 20;
 
 (*Apply a Hammond window to each segment*)
-hammond[x_] := Table[(0.54+0.46*Cos(2*Pi*i/(Length[x]))) * x[[i]], {i, 1, Length[x]}]
-hammondSlices = Table[hammond[Data[[i;;i+sliceSize-1]]], {i, 1,
- Length[data]-sliceSize, sliceSize}];
-slices = Flatten[hammondSlices];
+
+slices = Table[data[[i;;i+sliceSize-1]],{i,1,Length[data]-sliceSize,sliceSize-overlap}];
+
+
+hamming[x_] := Table[(0.54+0.46*Cos[2*\[Pi]*i/(Length[x])]) * x[[i]], {i, 1, Length[x]}];
+slices = Map[hamming,slices];
+slices = Map[Fourier,slices];
 
 (*Apply fourier transform to each window*)
-slices = Table[Fourier[data[[t;; t+sliceSize-1]] ], {t, 1, 
-Length[data] - sliceSize, sliceSize}];
 
 slices = Abs[slices];
 slices = Function[x, x/2N[Pi,6]]/@slices;
-slices
+Return[slices];
+];
+slices = spectrogram["/home/liei/git/shoebox/trainfiles/go/go_0.wav"];
 ListContourPlot[slices]
-]
-spectrogram["c:/trainingData/go_0.wav"]
 
 
 (* ::InheritFromParent:: *)
-(*spectrogram["c:/trainingData/go_0.wav"]*)
+(*spectrogram["/home/liei/git/shoebox/trainfiles/go/go_0.wav"]*)
