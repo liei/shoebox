@@ -1,6 +1,5 @@
 (* ::Package:: *)
 
-
 (* Returns the featuresof the file found at path *)
 features[path] := Module[{sampleRate, data, frameSize, overlap},
 
@@ -30,11 +29,14 @@ frames = Function[x, x/2N[Pi,6]]/@frames;
 frames = Map[DeleteDuplicates, frames];
 findPeaks[list, peaks] := Sort[list, Greater][[1;;peaks]];
 
-features = Table[findPeaks[frames[[i]], 6], {i, 1, Length[frames]}]
+features = Table[findPeaks[frames[[i]], 6], {i, 1, Length[frames]}];
 
 ]
-path = "d:\\go_0.wav"
+path = "d:\\go_0.wav";
 features = features[path]
+
+
+
 
 
 
