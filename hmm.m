@@ -1,12 +1,31 @@
 (* ::Package:: *)
 
-forward[A_,B_,f_,O_] := Module[{},
-	Print["forward"];
+forward[f_,A_,Bs_] := Module[{newf},
+	newf = f.A.B;
+	newf = newf/Total[newf];
+	Return[forward[newf,A,B]];
 ];
 
-backward[A_,B_,b_,O_] := Module[{},
+A  = {{0.7,0.3},{0.3,0.7}};
+U  = {{0.9,0.0},{0.0,0.2}};
+NU = {{0.1,0.0},{0.0,0.8}};
+Bs = {U,U,NU,U,U};
+
+Print[forward[{0.5,0.5},A,Bs]
+
+
+backward[b_,A_,B_] := Module[{},
 	Print["backward"];
 ]; 
+
+
+
+
+
+
+
+
+
 
 
 newClassifier[word_,trainingSet_] := Module[{returnFunction,A,B},
