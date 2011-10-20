@@ -2,6 +2,10 @@
 
 forward[A_,B_,f_,O_] := Module[{},
 	Print["forward"];
+];
+
+backward[A_,B_,b_,O_] := Module[{},
+	Print["backward"];
 ]; 
 
 
@@ -29,6 +33,17 @@ emInit[O_, N_] := Module[{A,prior, mu, sigma},
 	sigma = Sqrt[(#/Total[#] &[RandomReal[{0.1,0.99},N]]) * Covariance[O]];
 
    Return[{prior, A, mu,sigma}];
+];
+
+emStep[] := Module[{},
+	DoStep[];
+];
+
+baumWelch[O_,N_] := Module[{init},
+	state = emInit[O,N];
+	For[ (*as many times as it takes!*)
+		state = emStep[state];
+	]
 ];
 
 O = {{4,2,2},{4,2,1}{5,7,2}}

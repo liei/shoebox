@@ -1,7 +1,7 @@
 (* ::Package:: *)
 
 (* Returns the featuresof the file found at path *)
-extract[path_] := Module[{sampleRate, data, frameSize, overlap},
+extract[path_] := Module[{sampleRate, data, frameSize, overlap,peaks},
 
 Print[path];
 
@@ -27,7 +27,9 @@ frames = Map[hamming,frames];
 frames = Fourier /@ frames;
 frames = Abs[frames];
 frames = Map[DeleteDuplicates, frames];
-Return[Ordering[#,6,Greater] & /@ frames];
+Print[ListLinePlot[frames[[20]]]];
+frames = Take[Sort[Flatten[Position[Partition[Differences[#], 2, 1], {x_, y_} /; Sign[x] > Sign[y]] + 1],Function[{e1,e2},#[[e1]] > #[[e2]]]],3] & /@ frames;
+Return[frames];
 ];
 path = "git/shoebox/training/go/go_0.wav";
 features = extract[Directory[] <> "/" <> path];
