@@ -49,3 +49,8 @@ baumWelch[frames_,N_] := Module[{state,A,mu,sigma},
 	Nest[emStep,state,True,15];
 	Return[{A,mu,sigma}];
 ];
+
+calcB[frame, mu, sigma] := Module[{multiNormal},
+        DiagonalMatrix[Table[PDF[MultinormalDistribution[mu[[i]], sigma[[i]]],
+frame],{i,1,Length[mu]}]];
+]; 
