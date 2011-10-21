@@ -18,28 +18,18 @@ NU = {{0.1,0.0},{0.0,0.8}};
 Bs = {U,U,NU,U,U};
 
 
-
-
-
-
-
-
-newClassifier[features_] := Module[{A,calcB},
-	{A,calcB} = baumWelch[trainingSet];
-	Return[forward[{0.5,0.5},A,calcB /@ #] &];
+calcB[mu_,sigma_,frame_] = Module[{},
+	Print["calcB"];
 ];
 
-newClassifier[{{{1,3,4},{2,3,4}},{{1,3,4},{2,3,4}}}];
+newClassifier[{A_,mu_,sigma_}] := Function[frames,forward[{0.5,0.5},A,calcB[mu,sigma,#] & /@ frames]];
 
-emInit[O_, N_] := Module[{A,prior, mu, sigma},
+emInit[frames_, N_] := Module[{A,prior, mu, sigma},
 	
 	(* Generate a random prior *)
 	prior = Transpose[#/Total[#] & /@ (RandomReal[{0.01, 0.99}, {1,N}])];
-	(*	
-	
 	(* Generate a random transition matrix A *)
 	A = #/Total[#] & /@ (RandomReal[{0.01, 0.99}, {N,N}]);
-	Covariance[]
 	(* mu, for each state *)
 	mu = (#/Total[#] &[RandomReal[{-0.99,0.99},N]]) * Mean[O];
 	(* sigma *)
@@ -54,8 +44,8 @@ emStep[{prior_,A_,mu_,sigma_}] := Module[{},
 	Return[{prior,A,mu,sigma}];
 ];
 
-baumWelch[frames_,N_] := Module[{state,A,calcB},
+baumWelch[frames_,N_] := Module[{state,A,mu,sigma},
 	state = emInit[frames,N];
-	Fold[emStep,state,True,15];
-	Return[A,calcB];
+	Nest[emStep,state,True,15];
+	Return[{A,mu,sigma}];
 ];
