@@ -18,8 +18,9 @@ NU = {{0.1,0.0},{0.0,0.8}};
 Bs = {U,U,NU,U,U};
 
 
-calcB[mu_,sigma_,frame_] = Module[{},
-	Print["calcB"];
+calcB[frame, mu, sigma] := Module[{multiNormal},
+        DiagonalMatrix[Table[PDF[MultinormalDistribution[mu[[i]], sigma[[i]]],
+frame],{i,1,Length[mu]}]];
 ];
 
 newClassifier[{A_,mu_,sigma_}] := Function[frames,forward[{0.5,0.5},A,calcB[mu,sigma,#] & /@ frames]];
@@ -50,7 +51,4 @@ baumWelch[frames_,N_] := Module[{state,A,mu,sigma},
 	Return[{A,mu,sigma}];
 ];
 
-calcB[frame, mu, sigma] := Module[{multiNormal},
-        DiagonalMatrix[Table[PDF[MultinormalDistribution[mu[[i]], sigma[[i]]],
-frame],{i,1,Length[mu]}]];
-]; 
+ 
