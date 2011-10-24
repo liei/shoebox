@@ -51,4 +51,26 @@ baumWelch[frames_,N_] := Module[{state,A,mu,sigma},
 	Return[{A,mu,sigma}];
 ];
 
- 
+viterbi[A, B, obs, pi] := Module[{ptr, N, T, seq, finalState, V}, 
+	N = Length[Diagonal[B]];
+	T = Dimension[obs[[1]][[All]]];
+	For[s = 1, s <= N, s++,
+		V[1][s] = pi[[s]][[s]] * B[obs[[1]]];
+	]
+	For[t = 2 <= T, t++,
+		For[s = 1, s <= N, i++,
+			t = Table[A[[y]][[s]] * V[t-1][y], {y, 1,N}];
+			ptr[y][t] = Ordering[t, -1];
+			V[[t]][[s]] = Max[t] * B[[obs[[t]]]][[s]];
+		]
+	]
+	finalState = Ordering[Table[V[[T]][[s]],{s,1,N}]];
+	seq = {finalState};
+	For[t = T, T >= 2, t--,
+		state = First[seq];
+		PrependTo[seq, ptr[state][T-t]];
+	]
+	Return[seq];
+];	
+	
+	
