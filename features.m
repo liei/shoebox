@@ -23,7 +23,8 @@ extract[path_] := Module[{sampleRate, data, frameSize,overlap},
 	frames = Abs[frames];
 	frames = Map[DeleteDuplicates, frames];
 	(*Find all peaks, sort them by amplitude, desc, and take the 3 first frequencies*)
-	frames = Take[Sort[Flatten[Position[Partition[Differences[#], 2, 1], {x_, y_} /; Sign[x] > Sign[y]] + 1],Function[{e1,e2},#[[e1]] > #[[e2]]]],3] & /@ frames;
+	frames = Sort[Flatten[Position[Partition[Differences[#], 2, 1], {x_, y_} /; Sign[x] > Sign[y]] + 1],Function[{e1,e2},#[[e1]] > #[[e2]]]] & /@ frames;
+	frames = Take[PadRight[#,3,0]] & frames;
 	Return[frames];
 ];
 

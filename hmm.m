@@ -19,8 +19,7 @@ Bs = {U,U,NU,U,U};
 
 
 calcB[frame, mu, sigma] := Module[{multiNormal},
-        DiagonalMatrix[Table[PDF[MultinormalDistribution[mu[[i]], sigma[[i]]],
-frame],{i,1,Length[mu]}]];
+        DiagonalMatrix[Table[PDF[MultinormalDistribution[mu[[i]], sigma[[i]]],frame],{i,1,Length[mu]}]];
 ];
 
 newClassifier[{A_,mu_,sigma_}] := Function[frames,forward[{0.5,0.5},A,calcB[mu,sigma,#] & /@ frames]];
