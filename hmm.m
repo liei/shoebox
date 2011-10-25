@@ -4,7 +4,7 @@ normalize[lst_] := lst/Total[lst];
 
 forward[f_,A_,Bs_] := FoldList[normalize[#1.Transpose[A].#2] &,f,Bs];
 
-backward[b_,A_,Bs_] := Reverse[FoldList[normalize[A.#2.#1] &,b,Bs]];
+backward[b_,A_,Bs_] := FoldList[normalize[A.#2.#1] &,b,Reverse[Bs]];
 
 forwardBackward[fInit_,A_,Bs_] := Module[{f,b},
 	f = forward[fInit,A,Bs];
