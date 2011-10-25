@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     58829,       1351]
-NotebookOptionsPosition[     57358,       1304]
-NotebookOutlinePosition[     57701,       1319]
-CellTagsIndexPosition[     57658,       1316]
+NotebookDataLength[     60086,       1387]
+NotebookOptionsPosition[     58459,       1335]
+NotebookOutlinePosition[     58802,       1350]
+CellTagsIndexPosition[     58759,       1347]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -276,6 +276,8 @@ Cell[BoxData[{
   ";"}], "\[IndentingNewLine]"}], "Input",
  CellChangeTimes->{{3.528535868129458*^9, 3.528535869205042*^9}, {
   3.5285378296910667`*^9, 3.5285378309738703`*^9}}],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
@@ -573,14 +575,12 @@ Cell[BoxData[{
                 RowBox[{"A", "[", 
                  RowBox[{"[", 
                   RowBox[{"k", ",", "l"}], "]"}], "]"}], " ", "*", " ", 
-                RowBox[{"calcB", "[", 
-                 RowBox[{
-                  RowBox[{"[", 
-                   RowBox[{"Os", "[", 
-                    RowBox[{"[", "t", "]"}], "]"}], "]"}], "[", 
-                  RowBox[{"[", 
-                   RowBox[{"l", ",", "l"}], "]"}], "]"}], "]"}], " ", "*", 
-                " ", 
+                RowBox[{
+                 RowBox[{"calcB", "[", 
+                  RowBox[{"Os", "[", 
+                   RowBox[{"[", "t", "]"}], "]"}], "]"}], "[", 
+                 RowBox[{"[", 
+                  RowBox[{"l", ",", "l"}], "]"}], "]"}], " ", "*", " ", 
                 RowBox[{"r", "[", 
                  RowBox[{"[", 
                   RowBox[{"t", ",", "l"}], "]"}], "]"}]}], " ", ",", 
@@ -859,8 +859,39 @@ Cell[BoxData[{
    3.528555189174095*^9, 3.528555204109949*^9}, {3.5285552729628873`*^9, 
    3.5285554938945236`*^9}, {3.528555534880868*^9, 3.5285556081800604`*^9}, {
    3.5285556504424777`*^9, 3.52855565642482*^9}, {3.5285556964571095`*^9, 
-   3.5285557397245846`*^9}},
+   3.5285557397245846`*^9}, {3.528556274835191*^9, 3.5285562791274366`*^9}},
  EmphasizeSyntaxErrors->True],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Syntax", "::", "sntxb"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Expression cannot begin with \
+\\\"\[NoBreak]\\!\\(\\(\\([\\(\\(Os[\\(\\([t]\\)\\)]\\)\\)]\\)\\)[\\(\\([\\(\\\
+(l, l\\)\\)]\\)\\)]\\)\[NoBreak]\\\"\[NoBreak]\\!\\(\\\"\\\"\\)\[NoBreak].\"\>\
+"}]], "Message", "MSG",
+ CellChangeTimes->{{3.5285562305966606`*^9, 3.528556235005913*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Syntax", "::", "tsntxi"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"\\\"\[NoBreak]\\!\\([\\(\\(Os[\\(\\([t]\\)\\)]\\)\\)]\\)\
+\[NoBreak]\\\" is incomplete; more input is \
+needed.\[NoBreak]\\!\\(\\\"\\\"\\)\[NoBreak]\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{{3.5285562305966606`*^9, 3.528556235008913*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Syntax", "::", "sntxi"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Incomplete expression; more input is needed \
+\[NoBreak]\\!\\(\\\"\\\"\\)\[NoBreak].\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{{3.5285562305966606`*^9, 3.5285562350119133`*^9}}]
+}, Open  ]],
 
 Cell[BoxData["-"], "Input",
  CellChangeTimes->{3.52855019107622*^9}],
@@ -1320,38 +1351,43 @@ CellTagsIndex->{}
 Notebook[{
 Cell[557, 20, 9488, 224, 588, "Code"],
 Cell[10048, 246, 980, 31, 112, "Input"],
-Cell[11031, 279, 27720, 583, 1588, "Code"],
-Cell[38754, 864, 68, 1, 31, "Input"],
 Cell[CellGroupData[{
-Cell[38847, 869, 389, 11, 31, "Input"],
-Cell[39239, 882, 416, 11, 30, "Output"]
+Cell[11053, 281, 27708, 581, 1588, "Code"],
+Cell[38764, 864, 403, 9, 21, "Message"],
+Cell[39170, 875, 365, 8, 21, "Message"],
+Cell[39538, 885, 302, 7, 21, "Message"]
 }, Open  ]],
-Cell[39670, 896, 315, 9, 31, "Input"],
+Cell[39855, 895, 68, 1, 31, "Input"],
 Cell[CellGroupData[{
-Cell[40010, 909, 471, 8, 31, "Input"],
-Cell[40484, 919, 5885, 117, 50, "Output"]
+Cell[39948, 900, 389, 11, 31, "Input"],
+Cell[40340, 913, 416, 11, 30, "Output"]
+}, Open  ]],
+Cell[40771, 927, 315, 9, 31, "Input"],
+Cell[CellGroupData[{
+Cell[41111, 940, 471, 8, 31, "Input"],
+Cell[41585, 950, 5885, 117, 50, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[46406, 1041, 505, 7, 31, "Input"],
-Cell[46914, 1050, 689, 14, 29, "Message"],
-Cell[47606, 1066, 1007, 19, 29, "Message"],
-Cell[48616, 1087, 692, 14, 29, "Message"],
-Cell[49311, 1103, 1007, 19, 29, "Message"],
-Cell[50321, 1124, 692, 14, 29, "Message"],
-Cell[51016, 1140, 529, 11, 21, "Message"],
-Cell[51548, 1153, 416, 9, 21, "Message"],
-Cell[51967, 1164, 1005, 19, 29, "Message"],
-Cell[52975, 1185, 553, 11, 21, "Message"],
-Cell[53531, 1198, 430, 9, 21, "Message"],
-Cell[53964, 1209, 430, 9, 21, "Message"],
-Cell[54397, 1220, 428, 9, 21, "Message"],
-Cell[54828, 1231, 537, 11, 21, "Message"],
-Cell[55368, 1244, 868, 22, 30, "Output"]
+Cell[47507, 1072, 505, 7, 31, "Input"],
+Cell[48015, 1081, 689, 14, 29, "Message"],
+Cell[48707, 1097, 1007, 19, 29, "Message"],
+Cell[49717, 1118, 692, 14, 29, "Message"],
+Cell[50412, 1134, 1007, 19, 29, "Message"],
+Cell[51422, 1155, 692, 14, 29, "Message"],
+Cell[52117, 1171, 529, 11, 21, "Message"],
+Cell[52649, 1184, 416, 9, 21, "Message"],
+Cell[53068, 1195, 1005, 19, 29, "Message"],
+Cell[54076, 1216, 553, 11, 21, "Message"],
+Cell[54632, 1229, 430, 9, 21, "Message"],
+Cell[55065, 1240, 430, 9, 21, "Message"],
+Cell[55498, 1251, 428, 9, 21, "Message"],
+Cell[55929, 1262, 537, 11, 21, "Message"],
+Cell[56469, 1275, 868, 22, 30, "Output"]
 }, Open  ]],
-Cell[56251, 1269, 94, 1, 31, InheritFromParent],
+Cell[57352, 1300, 94, 1, 31, InheritFromParent],
 Cell[CellGroupData[{
-Cell[56370, 1274, 501, 12, 31, "Input"],
-Cell[56874, 1288, 468, 13, 30, "Output"]
+Cell[57471, 1305, 501, 12, 31, "Input"],
+Cell[57975, 1319, 468, 13, 30, "Output"]
 }, Open  ]]
 }
 ]
